@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Season of Gratitude</title>
+
+  <!-- Open Graph / WhatsApp Preview -->
+  <meta property="og:title" content="Season of Gratitude" />
+  <meta property="og:description" content="A quiet Christmas reflection on growth, grace, and the journey so far." />
+  <meta property="og:image" content="preview.jpg" />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-main:#060b08;
+      --bg-soft:#0c1a14;
+      --text-main:#f6f8f4;
+      --text-muted:#c3d1c8;
+      --accent:#d4af37;
+      --green:#1f3d2b;
+    }
+
+    * { box-sizing:border-box; margin:0; padding:0; }
+
+    body {
+      font-family:'Inter',sans-serif;
+      background:radial-gradient(circle at top,#0f2419,var(--bg-main));
+      color:var(--text-main);
+      line-height:1.8;
+      overflow-x:hidden;
+    }
+
+    section { padding:110px 8%; }
+
+    h1,h2,h3 { font-family:'Playfair Display',serif; }
+
+    p { color:var(--text-muted); font-size:1.05rem; }
+
+    .highlight { color:var(--accent); }
+
+    /* ===== SNOW ===== */
+    .snow span {
+      position:fixed; top:-10px;
+      width:6px; height:6px;
+      background:white; opacity:.15;
+      border-radius:50%;
+      animation:fall linear infinite;
+    }
+    @keyframes fall { to { transform:translateY(100vh); } }
+
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity:0;
+      transform:translateY(30px);
+      transition:all .9s ease;
+    }
+    .show { opacity:1; transform:none; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .festive-title {
+      display:inline-flex;
+      align-items:center;
+      gap:15px;
+      font-size:clamp(2.4rem,5vw,3.2rem);
+      color:var(--text-main);
+    }
+
+    /* Garland Header */
+    .header-garland {
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      margin:30px 0;
+    }
+
+    .header-garland span {
+      width:9px;height:9px;
+      background:var(--accent);
+      border-radius:50%;
+      box-shadow:0 0 8px rgba(212,175,55,.8);
+      animation:twinkle 2.5s infinite;
+    }
+    .header-garland span:nth-child(odd){animation-delay:1s;}
+
+    @keyframes twinkle {
+      0%,100%{opacity:.4;}
+      50%{opacity:1;}
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      margin-top:40px;
+      font-style:italic;
+      color:var(--accent);
+      animation:bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(8px);}
+    }
+
+    /* MESSAGE */
+    .message { background:var(--bg-soft); }
+    .message .wrap { max-width:850px; margin:auto; }
+    .message p { margin-bottom:35px; }
+
+    /* REFLECTION CARDS */
+    .cards {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:40px;
+      max-width:1100px;
+      margin:auto;
+    }
+
+    .card {
+      background:var(--bg-soft);
+      padding:45px 35px;
+      border-radius:18px;
+      text-align:center;
+      transition:.3s;
+    }
+    .card:hover{transform:translateY(-6px);}
+    .card i { color:var(--accent); font-size:1.9rem; margin-bottom:15px; }
+
+    /* PHOTOS */
+    .photos {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:40px;
+      max-width:1000px;
+      margin:auto;
+    }
+    .photos img {
+      width:100%;
+      border-radius:18px;
+      filter:grayscale(20%);
+      transition:.6s;
+    }
+    .photos img:hover{transform:scale(1.05);}
+
+    .caption {
+      text-align:center;
+      margin-top:25px;
+      font-style:italic;
+    }
+
+    /* SPLIT */
+    .split {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      max-width:1000px;
+      margin:auto;
+    }
+    .split div {
+      background:var(--bg-soft);
+      padding:45px;
+      border-radius:18px;
+    }
+
+    /* CLOSING */
+    .closing { text-align:center; }
+    .signature {
+      margin-top:35px;
+      font-size:1.3rem;
+      color:var(--accent);
+    }
+
+    /* MUSIC BUTTON */
+    .music-toggle {
+      position:fixed;
+      bottom:25px; right:25px;
+      width:52px; height:52px;
+      border-radius:50%;
+      background:var(--green);
+      color:var(--accent);
+      border:1px solid var(--accent);
+      cursor:pointer;
+      z-index:999;
+    }
+
+    /* MOBILE */
+    @media(max-width:768px){
+      section{padding:90px 6%;}
+      .split{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Snow -->
+<div class="snow">
+  <span style="left:10%;animation-duration:16s;"></span>
+  <span style="left:30%;animation-duration:20s;"></span>
+  <span style="left:50%;animation-duration:24s;"></span>
+  <span style="left:70%;animation-duration:18s;"></span>
+  <span style="left:90%;animation-duration:22s;"></span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="reveal">
+    <h1 class="festive-title">
+      <i class="fas fa-gift"></i> Season of Gratitude
+    </h1>
+
+    <div class="header-garland">
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <p>A quiet Christmas reflection on growth, grace, and the journey so far.</p>
+
+    <div class="scroll-cue">scroll gently ↓</div>
+  </div>
+</section>
+
+<!-- MESSAGE -->
+<section class="message">
+  <div class="wrap reveal">
+    <p>
+      Today I sit with my heart full, aware of <span class="highlight">how far God has brought me</span>.
+      There were moments I didn’t think I would make it this far.
+    </p>
+
+    <p>
+      When I had nothing left to give, <span class="highlight">God carried me</span>.
+      When doors closed and answers didn’t come, He remained.
+    </p>
+
+    <p>
+      This season, I hold space for <span class="highlight">deep gratitude</span>.
+    </p>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section>
+  <div class="cards">
+    <div class="card reveal"><i class="fas fa-heart"></i><h3>Gratitude</h3><p>Every tear had purpose.</p></div>
+    <div class="card reveal"><i class="fas fa-seedling"></i><h3>Growth</h3><p>Strength built quietly.</p></div>
+    <div class="card reveal"><i class="fas fa-star"></i><h3>Faith</h3><p>God is not done yet.</p></div>
+  </div>
+</section>
+
+<!-- PHOTOS -->
+<section>
+  <div class="photos">
+    <img src="images/chris2.png" class="reveal">
+    <img src="images/chris1.jpg" class="reveal">
+  </div>
+  <div class="caption reveal">Becoming • Learning • Grateful</div>
+</section>
+
+<!-- SPLIT -->
+<section>
+  <div class="split">
+    <div class="reveal"><h2>Reflection</h2><p>Lessons learned.</p></div>
+    <div class="reveal"><h2>Renewal</h2><p>Purpose-driven growth.</p></div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <p class="reveal">May peace follow you into the new year.</p>
+  <div class="signature reveal">Justice Simon Zotoo</div>
+</section>
+
+<footer>© 2025 · Season of Gratitude</footer>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="music\Zambolino - Silent Night (freetouse.com).mp3" type="audio/mpeg">
+</audio>
+<button class="music-toggle" id="musicBtn"><i class="fas fa-music"></i></button>
+
+<script>
+  const music=document.getElementById('music');
+  const btn=document.getElementById('musicBtn');
+  let started=false,playing=false;
+
+  document.body.addEventListener('click',()=>{
+    if(!started){
+      music.play();
+      started=true; playing=true;
+      btn.innerHTML='<i class="fas fa-volume-mute"></i>';
+    }
+  },{once:true});
+
+  btn.onclick=()=>{
+    if(playing){
+      music.pause();
+      btn.innerHTML='<i class="fas fa-music"></i>';
+    }else{
+      music.play();
+      btn.innerHTML='<i class="fas fa-volume-mute"></i>';
+    }
+    playing=!playing;
+  };
+
+  const obs=new IntersectionObserver(e=>{
+    e.forEach(x=>x.isIntersecting&&x.target.classList.add('show'));
+  },{threshold:.15});
+
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
